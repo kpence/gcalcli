@@ -525,7 +525,14 @@ class GoogleCalendarInterface:
                     tmp_date_color = self.options['color_now_marker']
                     d += ' **'
 
-                d += ' ' * (self.options['cal_width'] - self._printed_len(d))
+                if j == 0 and self.options['week_numbers']:
+                    # week numbers
+                    week_num = (start_week_datetime + timedelta(days=j)).strftime('%W')
+                    self.printer.art_msg('vrt', color_border)
+                    self.printer.msg(week_num, tmp_date_color)
+                    d += ' ' * (self.options['cal_width'] - self._printed_len(d) - self._printed_len(week_num) - 1)
+                else:
+                    d += ' ' * (self.options['cal_width'] - self._printed_len(d))
 
                 # print dates
                 self.printer.art_msg('vrt', color_border)

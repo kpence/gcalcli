@@ -133,6 +133,9 @@ def get_output_parser(parents=[]):
     output_parser.add_argument(
             '--override-color', action='store_true', default=False,
             help='Use overridden color for event')
+    output_parser.add_argument(
+            '--week-numbers', action='store_true', default=False,
+            dest='week_numbers', help='Display week numbers')
     return output_parser
 
 
